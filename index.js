@@ -39,80 +39,58 @@ Sample Output for the given listOfProducts will be :
 
 */
 
-
-
-
-const listOfProducts = [{
+const listOfProducts = [
+  {
     productName: "TV",
     quantity: 10,
-    description: "television"
+    description: "television",
   },
   {
     productName: "AC",
     quantity: 5,
-    description: "air conditioner"
+    description: "air conditioner",
   },
   {
     productName: "TV",
     quantity: 10,
-    description: "television"
+    description: "television",
   },
   {
     productName: "AC",
     quantity: 5,
-    description: "air conditioner"
+    description: "air conditioner",
   },
   {
     productName: "FAN",
     quantity: 10,
-    description: "Ceiling Fan"
-  }
+    description: "Ceiling Fan",
+  },
 ];
 
 function getUniqueProductCount() {
-let obj={};
-listOfProducts.map((e)=>{
-return obj[e.productName] = e.quantity
-})
- return obj;
+  let obj = {};
+  listOfProducts.forEach((e) => {
+    obj[e.productName] ? obj[e.productName]++ : (obj[e.productName] = 1);
+  });
+  return obj;
 }
-// console.log(getUniqueProductCount())
+console.log(getUniqueProductCount());
 
-function getUniquePrducts(){
-let arr=[];
-let product=[];
-for(let i=0;i<listOfProducts.length;i++)
-{
-		if(!product.includes(listOfProducts[i].productName))
-    {
-    	product.push(listOfProducts[i].productName);
+function getUniquePrducts() {
+  let arr = [];
+  let product = [];
+  for (let i = 0; i < listOfProducts.length; i++) {
+    if (!product.includes(listOfProducts[i].productName)) {
+      product.push(listOfProducts[i].productName);
       arr.push(listOfProducts[i]);
-    }
-    else{
-    
-    	for(let j=0;j<arr.length;j++)
-      {
-      	if(arr[j].productName===listOfProducts[i].productName)
-        {
-        	arr[j].quantity+=listOfProducts[i].quantity
+    } else {
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[j].productName === listOfProducts[i].productName) {
+          arr[j].quantity += listOfProducts[i].quantity;
         }
       }
     }
-    
+  }
+  return arr;
 }
-return arr;
-}
-// console.log(getUniquePrducts())
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(getUniquePrducts());
